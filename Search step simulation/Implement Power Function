@@ -1,0 +1,31 @@
+class Solution:
+    # @param x : integer
+    # @param n : integer
+    # @param d : integer
+    # @return an integer
+    def pow(self, x, n, d):
+        rem=1
+        ch=0
+        if(x==0):
+            return 0
+        if(n==0):
+            return 1
+        if(x<0):
+            x=abs(x)
+            if(n%2!=0):
+                ch=1
+        temp=x%d
+        while n!=0:
+            if(n%2!=0):
+                rem=(rem*temp)%d
+            temp=temp**2
+            temp=temp%d
+            
+            n=n/2
+            if(rem>d):
+                rem=rem%d
+                
+        if ch==1:
+            return d-rem
+            
+        return rem        
